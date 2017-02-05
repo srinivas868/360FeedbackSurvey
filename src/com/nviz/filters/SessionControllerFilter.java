@@ -21,6 +21,7 @@ public class SessionControllerFilter implements Filter {
 		User user = (User) httpRequest.getSession().getAttribute("user");
 		if(user != null){
 			request.setAttribute("userName", user.getFirstName());
+			request.setAttribute("user", user);
 			request.setAttribute("transient","false");
 		} else{
 			request.setAttribute("transient","true");

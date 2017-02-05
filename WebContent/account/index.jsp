@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%> 
-<%@ include file="/common/static-content.jsp" %>
 <div style="margin-left: 140px;">
 <ul>
 	<li>
-		<div class="left-content-admin">
-			<h1><span>Account Overview</span></h1>
+		<div class="left-content-account">
+			<h1 style="font-size:18px;"><span>Account Overview</span></h1>
 		</div>
-		<div class="right-content-admin">
-		<c:forEach var="user" items="${userItems}" varStatus="status">
+		<div class="right-content-account">
+		<c:if test="${not empty user}">
 			<h3>${user.firstName} ${user.lastName}</h3>
 			<p>
-				${user.description}
+				${user.employeeId}
 			</p>
-		</c:forEach>
-		<a href="javascript:loadCreateSurveyForm();" class="more">Create Survey</a>
+		</c:if>
+		<a href="javascript:loadCreateSurveyForm();" class="more">Add address</a>
 		</div>
 	</li>
 	<li>
-		<div class="left-content-admin">
-			<h1><span>Survey Overview</span></h1>
+		<div class="left-content-account">
+			<h1 style="font-size:18px;"><span>Survey Overview</span></h1>
 		</div>
-		<div class="right-content-admin">
-		<c:forEach var="user" items="${userItems}" varStatus="status">
-			<h3>${user.firstName}</h3>
+		<div class="right-content-account">
+		<c:forEach var="survey" items="${surveyItems}" varStatus="status">
+			<h3>${survey.title}</h3>
+			<p>
+				${survey.description}
+			</p>
 		</c:forEach>
-		<a href="javascript:loadCreateUserForm();" class="more">Create User</a>
+		<!-- <a href="javascript:loadCreateUserForm();" class="more">Create User</a> -->
 		</div>
 	</li>
 </ul>

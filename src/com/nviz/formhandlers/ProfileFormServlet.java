@@ -25,7 +25,7 @@ public class ProfileFormServlet extends HttpServlet {
 	private static final String DASH = "-";
 	private static final String RATING = "rating";
 	private static final long serialVersionUID = -7450126892652140289L;
-	private SurveyManagerTools SurveyManagerTools;
+	private SurveyManagerTools surveyManagerTools;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -58,15 +58,15 @@ public class ProfileFormServlet extends HttpServlet {
 	
 	@Override
 	public void destroy() {
-		this.SurveyManagerTools = null;
+		this.surveyManagerTools = null;
 	}
 	@Override
 	public void init() throws ServletException {
-		if(this.SurveyManagerTools == null){
-			this.SurveyManagerTools = new SurveyManagerTools();
+		if(this.surveyManagerTools == null){
+			this.surveyManagerTools = new SurveyManagerTools();
 		}
 	}
 	public SurveyManagerTools getSurveyManagerTools() {
-		return SurveyManagerTools;
+		return surveyManagerTools;
 	}
 }

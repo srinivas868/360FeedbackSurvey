@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.nviz.rest.SurveyManagerService;
+import com.nviz.util.SurveyManagerTools;
 import com.nviz.vo.Quality;
 import com.nviz.vo.Record;
 import com.nviz.vo.Survey;
@@ -28,7 +28,7 @@ public class SurveyFormDataServlet extends HttpServlet {
 	private static final String DASH = "-";
 	private static final String RATING = "rating";
 	private static final long serialVersionUID = -7450126892652140289L;
-	private SurveyManagerService surveyManagerService;
+	private SurveyManagerTools SurveyManagerTools;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -38,9 +38,9 @@ public class SurveyFormDataServlet extends HttpServlet {
 		try {
 			String surveyId = (String) request.getParameter("surveyId");
 			if(surveyId != null){
-				Survey survey = (Survey) getSurveyManagerService().getItem(Survey.class,surveyId); 
+				Survey survey = (Survey) getSurveyManagerTools().getItem(Survey.class,surveyId); 
 				List<Quality> qualityItems = survey.getQualities();
-				List<User> userItems = getSurveyManagerService().getItems("User");
+				List<User> userItems = getSurveyManagerTools().getItems("User");
 				for(User user : userItems){
 					for(Quality quality : qualityItems){
 						Record record = new Record();
@@ -51,21 +51,21 @@ public class SurveyFormDataServlet extends HttpServlet {
 						String input = request.getParameter(reqInputstring);
 						if(input != null){
 							record.setInput(Integer.valueOf(input));
-							getSurveyManagerService().addItem(record);
+							getSurveyManagerTools().addItem(record);
 						}
 					}
 				}
 				responseJson.put("code", "success");
 			} else{
-				getSurveyManagerService().logDebug("Survey Id is empty");
+				getSurveyManagerTools().logDebug("Survey Id is empty");
 				responseJson.put("code", "error");
 			}
 		} catch (Exception e) {
-			getSurveyManagerService().logDebug("SurveyFormDataServlet:: doGet:: exception while performing suvey form data operations "+e);
+			getSurveyManagerTools().logDebug("SurveyFormDataServlet:: doGet:: exception while performing suvey form data operations "+e);
 			try {
 				responseJson.put("code", "error");
 			} catch (JSONException e1) {
-				getSurveyManagerService().logDebug("ProfileFormServlet:: doGet:: exception while writing data to JSON "+e);
+				getSurveyManagerTools().logDebug("ProfileFormServlet:: doGet:: exception while writing data to JSON "+e);
 			}
 		} finally{
 			PrintWriter out = response.getWriter();
@@ -76,15 +76,15 @@ public class SurveyFormDataServlet extends HttpServlet {
 	
 	@Override
 	public void destroy() {
-		this.surveyManagerService = null;
+		this.SurveyManagerTools = null;
 	}
 	@Override
 	public void init() throws ServletException {
-		if(this.surveyManagerService == null){
-			this.surveyManagerService = new SurveyManagerService();
+		if(this.SurveyManagerTools == null){
+			this.SurveyManagerTools = new SurveyManagerTools();
 		}
 	}
-	public SurveyManagerService getSurveyManagerService() {
-		return surveyManagerService;
+	public SurveyManagerTools getSurveyManagerTools() {
+		return SurveyManagerTools;
 	}
 }

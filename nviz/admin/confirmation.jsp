@@ -1,3 +1,3 @@
 <div class="article">
-	Thank you! Survey response has been submitted.
+	<div align="center">Thank you! Survey response has been submitted.</div>
 </div>

@@ -107,12 +107,17 @@ public class SurveyManagerTools {
 		Session session = null;
 		try{
 			session = getSessionFactory().openSession();
-			String userName = request.getParameter("login");
+			String login = request.getParameter("login");
 			String password = PasswordUtil.encrypt(request.getParameter("password"));
-			Query query = session.createQuery("FROM User as u where u.login=:userName and u.password=:password");
-			query.setString(SurveyConstants.USERNAME, userName);
+			Query query = session.createQuery("FROM User as u where u.login=:login and u.password=:password");
+			query.setString("login", login);
 			query.setString(SurveyConstants.PASSWORD, password);
-			return (User) query.list().get(0);
+			List users =  query.list();
+			if(users != null && !users.isEmpty()){
+				return (User) query.list().get(0);
+			} else{
+				return null;
+			}
 		} catch (Throwable e) {
 			throw new Exception(e);
 		} finally{

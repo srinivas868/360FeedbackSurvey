@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%> 
-<%@ include file="/common/static-content.jsp" %>
 <div style="margin-left: 140px;">
 <ul>
 	<li>
@@ -15,7 +14,7 @@
 				${survey.description}
 			</p>
 		</c:forEach>
-		<a href="javascript:createSurvey();" class="more">Create Survey</a>
+		<a href="javascript:loadCreateSurveyForm();" class="more">Create Survey</a>
 		</div>
 	</li>
 	<li>

@@ -13,12 +13,12 @@ id="WebApp_ID" version="3.0">
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>  
     <init-param>  
         <param-name>jersey.config.server.provider.packages</param-name>  
-        <param-value>com.nviz.rest</param-value>  
+        <param-value>com.nviz.rest</param-value>
     </init-param>  
     <load-on-startup>1</load-on-startup>  
   </servlet>  
   <servlet-mapping>  
-    <servlet-name>Jersey REST Service</servlet-name>  
+    <servlet-name>Jersey REST Service</servlet-name>
     <url-pattern>/rest/*</url-pattern>  
   </servlet-mapping>
   <servlet>  
@@ -38,6 +38,15 @@ id="WebApp_ID" version="3.0">
   <servlet-mapping>  
     <servlet-name>Profile form submission</servlet-name>  
     <url-pattern>/createUser/*</url-pattern>
+  </servlet-mapping> 
+  <servlet>  
+    <servlet-name>Login form submission</servlet-name>  
+    <servlet-class>com.nviz.formhandlers.LoginFormServlet</servlet-class>  
+    <load-on-startup>1</load-on-startup>  
+  </servlet>  
+  <servlet-mapping>  
+    <servlet-name>Login form submission</servlet-name>  
+    <url-pattern>/login/*</url-pattern>
   </servlet-mapping>  
   <filter>
    <filter-name>ItemsRetreiverFilter</filter-name>
@@ -50,5 +59,17 @@ id="WebApp_ID" version="3.0">
   <filter-mapping>
 	   <filter-name>ItemsRetreiverFilter</filter-name>
 	   <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+	   <filter-name>ItemsRetreiverFilter</filter-name>
+	   <url-pattern>/account/*</url-pattern>
+  </filter-mapping>
+  <filter>
+   <filter-name>SessionControllerFilter</filter-name>
+   <filter-class>com.nviz.filters.SessionControllerFilter</filter-class>
+  </filter>
+  <filter-mapping>
+	   <filter-name>SessionControllerFilter</filter-name>
+	   <url-pattern>/*</url-pattern>
   </filter-mapping>
 </web-app>   

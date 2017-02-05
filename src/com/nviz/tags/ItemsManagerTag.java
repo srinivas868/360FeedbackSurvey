@@ -7,19 +7,17 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
-import org.json.JSONException;
-
-import com.nviz.rest.SurveyManagerService;
+import com.nviz.util.SurveyManagerTools;
 
 public class ItemsManagerTag extends SimpleTagSupport {
 	
-	private SurveyManagerService surveyManagerService;
+	private SurveyManagerTools SurveyManagerTools;
 	private String type;
 	
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
 		try {
-			List items = getSurveyManagerService().getItems(getType());
+			List items = getSurveyManagerTools().getItems(getType());
 			out.println(items);
 		} catch (Exception e) {
 			out.println("EXception while fetching survey items "+e);
@@ -27,11 +25,11 @@ public class ItemsManagerTag extends SimpleTagSupport {
 	    out.println("Hello Custom Tag!");
 	  }
 
-	public SurveyManagerService getSurveyManagerService() {
-		if(this.surveyManagerService == null){
-			this.surveyManagerService = new SurveyManagerService();
+	public SurveyManagerTools getSurveyManagerTools() {
+		if(this.SurveyManagerTools == null){
+			this.SurveyManagerTools = new SurveyManagerTools();
 		}
-		return surveyManagerService;
+		return SurveyManagerTools;
 	}
 
 	public String getType() {

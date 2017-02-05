@@ -11,9 +11,14 @@ function loadAdminConsole(){
 	$('#admin').attr('class','selected');
 }
 function loadMyAccount(){
-	$("#body").load( "/nviz/admin/index.jsp" );
+	$("#body").load( "/nviz/account/index.jsp" );
 	$('#navigation li').removeClass();
-	$('#admin').attr('class','selected');
+	$('#home').attr('class','selected');
+}
+function loadHome(){
+	$("#body").load( "/nviz/snips/main-content.jsp" );
+	$('#navigation li').removeClass();
+	$('#my-account').attr('class','selected');
 }
 function loadPagination() {
 	var qualitiesCount = $('#qualitiesCount').val();
@@ -41,7 +46,7 @@ function reloadSurveyForm(){
 
 function submitSurveyForm(){
 	var options = {
-		success: loginResponse,
+		success: surveyResponse,
 		dataType: 'json'
 	};
 	var form = $("#surveyForm");
@@ -49,7 +54,7 @@ function submitSurveyForm(){
 	form.submit();
 	return false;
 }
-function loginResponse(data){
+function surveyResponse(data){
 	if('success' == data.code){
 		$("#body").load( "/nviz/survey/confirmation.jsp" );
 	}
@@ -75,3 +80,36 @@ function userFormResponse(data){
 		$("#body").load( "/nviz/admin/confirmation.jsp" );
 	}
 }
+function login(){
+	var options = {
+		success: loginResponse,
+		dataType: 'json'
+	};
+	var form = $("#loginForm");
+	form.ajaxForm(options);
+	form.submit();
+	return false;
+}
+function loginResponse(data){
+	if('success' == data.code){
+		$("#body").load( "/nviz/survey/confirmation.jsp" );
+	}
+}
+$(document).ready(function(){
+	$.ajax({
+        url : '/nviz/rest/user/validateLogin',
+        type : 'GET',
+        async : false,
+        datatype : "application/json",
+        contentType: "application/json; charset=utf-8",
+        success : function(data) {
+        	if(data.status != 'Success'){
+        		console.log("User is not logged in");
+        		var loginPage = $('#loginPage').val();
+        		if(loginPage == undefined){
+        			$("#body").load( "/nviz/account/login.jsp" );
+        		}
+        	}
+        }
+	});
+});

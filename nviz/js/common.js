@@ -7,8 +7,14 @@ function loadSurvey(){
 }
 function loadAdminConsole(){
 	$("#body").load( "/nviz/admin/index.jsp" );
+	$('#navigation li').removeClass();
+	$('#admin').attr('class','selected');
 }
-
+function loadMyAccount(){
+	$("#body").load( "/nviz/account/index.jsp" );
+	$('#navigation li').removeClass();
+	$('#my-account').attr('class','selected');
+}
 function loadPagination() {
 	var qualitiesCount = $('#qualitiesCount').val();
     $('.pagination-holder').pagination({
@@ -35,7 +41,7 @@ function reloadSurveyForm(){
 
 function submitSurveyForm(){
 	var options = {
-		success: loginResponse,
+		success: surveyResponse,
 		dataType: 'json'
 	};
 	var form = $("#surveyForm");
@@ -43,13 +49,16 @@ function submitSurveyForm(){
 	form.submit();
 	return false;
 }
-function loginResponse(data){
+function surveyResponse(data){
 	if('success' == data.code){
 		$("#body").load( "/nviz/survey/confirmation.jsp" );
 	}
 }
 function loadCreateUserForm(){
 	$("#body").load( "/nviz/admin/create-user.jsp" );
+}
+function loadCreateSurveyForm(){
+	$("#body").load( "/nviz/survey/create-survey.jsp" );
 }
 function createUser(){
 	var options = {
@@ -66,3 +75,36 @@ function userFormResponse(data){
 		$("#body").load( "/nviz/admin/confirmation.jsp" );
 	}
 }
+function login(){
+	var options = {
+		success: loginResponse,
+		dataType: 'json'
+	};
+	var form = $("#loginForm");
+	form.ajaxForm(options);
+	form.submit();
+	return false;
+}
+function loginResponse(data){
+	if('success' == data.code){
+		$("#body").load( "/nviz/survey/confirmation.jsp" );
+	}
+}
+$(document).ready(function(){
+	$.ajax({
+        url : '/nviz/rest/user/validateLogin',
+        type : 'GET',
+        async : false,
+        datatype : "application/json",
+        contentType: "application/json; charset=utf-8",
+        success : function(data) {
+        	if(data.status != 'Success'){
+        		console.log("User is not logged in");
+        		var loginPage = $('#loginPage').val();
+        		if(loginPage == undefined){
+        			$("#body").load( "/nviz/account/login.jsp" );
+        		}
+        	}
+        }
+	});
+});

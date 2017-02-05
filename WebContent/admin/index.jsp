@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%> 
-<%@ include file="/common/static-content.jsp" %>
 <div style="margin-left: 140px;">
 <ul>
 	<li>
