@@ -6,13 +6,13 @@
 <ul>
 	<li>
 		<div class="left-content-admin">
-			<h1><span>Survey</span></h1>
+			<h1><span>Account Overview</span></h1>
 		</div>
 		<div class="right-content-admin">
-		<c:forEach var="survey" items="${surveyItems}" varStatus="status">
-			<h3>${survey.title}</h3>
+		<c:forEach var="user" items="${userItems}" varStatus="status">
+			<h3>${user.firstName} ${user.lastName}</h3>
 			<p>
-				${survey.description}
+				${user.description}
 			</p>
 		</c:forEach>
 		<a href="javascript:loadCreateSurveyForm();" class="more">Create Survey</a>
@@ -20,7 +20,7 @@
 	</li>
 	<li>
 		<div class="left-content-admin">
-			<h1><span>User</span></h1>
+			<h1><span>Survey Overview</span></h1>
 		</div>
 		<div class="right-content-admin">
 		<c:forEach var="user" items="${userItems}" varStatus="status">

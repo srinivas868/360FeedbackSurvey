@@ -11,43 +11,32 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.nviz.util.PasswordUtil;
 import com.nviz.util.SurveyManagerTools;
 import com.nviz.vo.User;
 
 
-/**
- * this servlet will collect user survey data
- * @author Srinivas Sangishetty
- */
-public class ProfileFormServlet extends HttpServlet {
+public class LoginFormServlet extends HttpServlet {
 
-	private static final String DASH = "-";
-	private static final String RATING = "rating";
-	private static final long serialVersionUID = -7450126892652140289L;
+	private static final long serialVersionUID = -7356580162088706365L;
 	private SurveyManagerTools SurveyManagerTools;
-
-	@SuppressWarnings("unchecked")
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		JSONObject responseJson = new JSONObject();
 		try {
-			User user = new User();
-			String password = PasswordUtil.encrypt(request.getParameter("password"));
-			user.setPassword(password);
-			user.setLogin(request.getParameter("login"));
-			user.setFirstName(request.getParameter("firstName"));
-			user.setLastName(request.getParameter("lastName"));
-			user.setEmployeeId(request.getParameter("employeeId"));
-			getSurveyManagerTools().addItem(user);
-			responseJson.put("code", "success");
+			User user = getSurveyManagerTools().login(request);
+			if(user != null){
+				responseJson.put("code", "success");
+				request.getSession().setAttribute("user", user);
+			} else{
+				responseJson.put("code", "error");
+			}
 		} catch (Exception e) {
-			getSurveyManagerTools().logDebug("ProfileFormServlet:: doGet:: exception while performing suvey form data operations "+e);
+			getSurveyManagerTools().logDebug("LoginFormServlet:: doGet:: exception while performing login perations "+e);
 			try {
 				responseJson.put("code", "error");
 			} catch (JSONException e1) {
-				getSurveyManagerTools().logDebug("ProfileFormServlet:: doGet:: exception while writing data to JSON "+e);
+				getSurveyManagerTools().logDebug("LoginFormServlet:: doGet:: exception while writing data to JSON "+e);
 			}
 		}finally{
 			PrintWriter out = response.getWriter();
@@ -55,7 +44,6 @@ public class ProfileFormServlet extends HttpServlet {
 			out.flush();
 		}
 	}
-	
 	@Override
 	public void destroy() {
 		this.SurveyManagerTools = null;

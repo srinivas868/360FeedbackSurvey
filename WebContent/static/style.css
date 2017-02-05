@@ -321,9 +321,8 @@ p a:hover {
 	width: 596px;
 } */
 #body form textarea {
-	height: 175px;
-	overflow: auto;
-	resize: none;
+	width: 61%;
+	float:right;
 }
 #body form .button {
 	background: #252525;

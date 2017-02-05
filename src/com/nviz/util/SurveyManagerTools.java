@@ -1,8 +1,7 @@
-package com.nviz.rest;
-
-import java.io.Serializable;
-import java.util.Collections;
+package com.nviz.util;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,13 +10,14 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.nviz.vo.Survey;
+import com.nviz.vo.User;
 
-public class SurveyManagerService {
+public class SurveyManagerTools {
 	
 	private Configuration cfg;
 	private	SessionFactory sessionFactory;
 	
-	public SurveyManagerService(){
+	public SurveyManagerTools(){
 		setConfiguration(new Configuration());
 		getConfiguration().configure("/com/nviz/resource/hibernate.cfg.xml");
 	}
@@ -78,6 +78,11 @@ public class SurveyManagerService {
 		}
 	}
 	
+	/**
+	 * @param pItem
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean addItem(Object pItem) throws Exception {
 		Session session = null;
 		try{
@@ -91,6 +96,28 @@ public class SurveyManagerService {
 			session.close(); 
 		}
 		return true;
+	}
+	
+	/**
+	 * @param userName
+	 * @param password
+	 * @throws Exception 
+	 */
+	public User login(HttpServletRequest request) throws Exception {
+		Session session = null;
+		try{
+			session = getSessionFactory().openSession();
+			String userName = request.getParameter("login");
+			String password = PasswordUtil.encrypt(request.getParameter("password"));
+			Query query = session.createQuery("FROM User as u where u.login=:userName and u.password=:password");
+			query.setString(SurveyConstants.USERNAME, userName);
+			query.setString(SurveyConstants.PASSWORD, password);
+			return (User) query.list().get(0);
+		} catch (Throwable e) {
+			throw new Exception(e);
+		} finally{
+			session.close(); 
+		}
 	}
 	
 	public void logDebug(String message) {

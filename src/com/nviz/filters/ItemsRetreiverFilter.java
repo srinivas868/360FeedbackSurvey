@@ -1,7 +1,6 @@
 package com.nviz.filters;
 
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.Filter;
@@ -11,33 +10,30 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import org.json.JSONException;
-
-import com.nviz.rest.SurveyManagerService;
-import com.nviz.vo.Survey;
+import com.nviz.util.SurveyManagerTools;
 
 public class ItemsRetreiverFilter implements Filter{
 
 	private static final String TYPE = "type";
-	private SurveyManagerService surveyManagerService;
+	private SurveyManagerTools SurveyManagerTools;
 	
 	@Override
 	public void destroy() {
-		this.surveyManagerService = null;
+		this.SurveyManagerTools = null;
 	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain pChain) throws IOException, ServletException {
 		try {
-			List surveyItems = getSurveyManagerService().getItems("Survey",false);
-			List userItems = getSurveyManagerService().getItems("User",false);
-			List ratingItems = getSurveyManagerService().getItems("Rating",false);
+			List surveyItems = getSurveyManagerTools().getItems("Survey",false);
+			List userItems = getSurveyManagerTools().getItems("User",false);
+			List ratingItems = getSurveyManagerTools().getItems("Rating",false);
 			request.setAttribute("surveyItems", surveyItems);
 			request.setAttribute("userItems", userItems);
 			request.setAttribute("ratingItems", ratingItems);
 		} catch (Exception e) {
-			getSurveyManagerService().logDebug("Exception while fetching survey items "+e);
+			getSurveyManagerTools().logDebug("Exception while fetching survey items "+e);
 		} finally{
 			pChain.doFilter(request,response);
 		}
@@ -45,13 +41,13 @@ public class ItemsRetreiverFilter implements Filter{
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		if(this.surveyManagerService == null){
-			this.surveyManagerService = new SurveyManagerService();
+		if(this.SurveyManagerTools == null){
+			this.SurveyManagerTools = new SurveyManagerTools();
 		}
 	}
 	
-	public SurveyManagerService getSurveyManagerService() {
-		return surveyManagerService;
+	public SurveyManagerTools getSurveyManagerTools() {
+		return SurveyManagerTools;
 	}
 
 }

@@ -7,8 +7,14 @@ function loadSurvey(){
 }
 function loadAdminConsole(){
 	$("#body").load( "/nviz/admin/index.jsp" );
+	$('#navigation li').removeClass();
+	$('#admin').attr('class','selected');
 }
-
+function loadMyAccount(){
+	$("#body").load( "/nviz/admin/index.jsp" );
+	$('#navigation li').removeClass();
+	$('#admin').attr('class','selected');
+}
 function loadPagination() {
 	var qualitiesCount = $('#qualitiesCount').val();
     $('.pagination-holder').pagination({
@@ -50,6 +56,9 @@ function loginResponse(data){
 }
 function loadCreateUserForm(){
 	$("#body").load( "/nviz/admin/create-user.jsp" );
+}
+function loadCreateSurveyForm(){
+	$("#body").load( "/nviz/survey/create-survey.jsp" );
 }
 function createUser(){
 	var options = {
