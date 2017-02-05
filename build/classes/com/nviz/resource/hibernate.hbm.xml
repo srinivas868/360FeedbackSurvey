@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.nviz.vo.User" table="USER_MASTER">
+	    <id name="userId" column="user_id" type="integer">
+          <generator class="increment"></generator>
+        </id>
+		<property name="userName" column="USERNAME" type="java.lang.String">
+				</property>
+	</class>
+	<class name="com.nviz.vo.Address" table="ADDRESS">
+		<id name="addressId" column="address_id" type="integer">
+			<generator class="assigned"></generator>
+		</id>
+		<property name="address1" column="ADDRESS1" type="java.lang.String"></property>
+		<property name="address2" column="ADDRESS2" type="java.lang.String"></property>
+		<property name="phoneNum" column="PH_NO" type="java.lang.Integer"></property>
+		<property name="pinCode" column="PINCODE" type="java.lang.Integer"></property>
+		<property name="state" column="STATE" type="java.lang.String"></property>
+	</class>
+</hibernate-mapping>

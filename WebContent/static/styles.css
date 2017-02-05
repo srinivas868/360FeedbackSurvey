@@ -1,0 +1,511 @@
+@charset "utf-8";
+
+.dijitMenuItem{
+	width: 60px;
+}
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.clear {
+	clear: both;
+}
+
+.clearleft {
+	display: block;
+	clear: left;
+}
+
+.clearright {
+	display: block;
+	clear: right;
+}
+
+.hide {
+	display: none;
+}
+
+a {
+	color: #B32C0E;
+}
+
+a:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+body {
+	background: #FFFFFF url(images/bg.jpg) repeat-x;
+}
+
+#wrap {
+	width: 1200px;
+	margin: 0px auto 15px auto;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666666;
+}
+
+/*Header*/
+#header {
+	height: 242px;
+	background: url(images/header.jpg) no-repeat left top;
+	clear: both;
+}
+/*Header Menu*/
+#topmenu {
+	display: block;
+	list-style: none;
+	padding: 0 0px 0px 278px;
+	float: right;
+	width: 615px;
+}
+
+#topmenu li {
+	display: inline;
+}
+
+#topmenu a {
+	display: block;
+	float: left;
+	height: 28px;
+	margin: 0px 0px 0px0px;
+	text-decoration: none;
+	padding: 9px 15px 0px 15px;
+	text-align: center;
+}
+
+#topmenu a,#topmenu a:visited,#topmenu a:active {
+	color: #FFFFFF;
+}
+
+#topmenu a:hover {
+	color: #ffffff;
+	background-color: #B52E10;
+}
+
+#topmenu .active a,#topmenu .active a:visited,#topmenu .active a:active
+	{
+	color: #FFFFFF;
+	background-color: #B42D0F;
+}
+
+/*Content*/
+#content {
+	background-color: #FFFFFF;
+}
+
+#mainpage {
+	width: 1200px;
+	float: left;
+	padding: 5px 5px 5px 0px;
+	margin-bottom: 50;
+	min-height: 750px;
+}
+
+#mainpage p {
+	line-height: 22px;
+	margin: 10px 0px 22px 0px;
+}
+
+#mainpage blockquote {
+	background: #efefef;
+	display: block;
+	margin: 5px;
+	font: Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+}
+
+h1,h2,h4,h5 {
+	color: #B32C0E;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+	color: #1978BE;
+}
+
+#mainpage h1 {
+	font-size: 24px;
+	color: #F2F7F3;
+}
+
+#mainpage h2 {
+	font-size: 18px;
+	padding-top: 20px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #B52E10;
+}
+
+#mainpage h3 {
+	font-size: 20px;
+}
+
+#mainpage h4 {
+	font-size: 18px;
+}
+
+#mainpage h5 {
+	font-size: 16px;
+}
+
+.style_2 {
+	font-size: 7px;
+	color: #000011;
+}
+
+.style_2 a {
+	font-size: 7px;
+	color: #000011;
+}
+
+.style_2 a:hover {
+	font-size: 7px;
+	color: #000011;
+}
+
+#content #mainpage ol {
+	margin: 10px 10px 10px 25px;
+}
+
+#content #mainpage ol li {
+	padding: 5px 5px 5px 20px;
+}
+
+#content #mainpage ul li {
+	display: block;
+	padding: 0px;
+}
+
+/*Sidebar*/
+#sidebar {
+	margin: 0px 0px 0px 0px;
+	width: 225px;
+	float: right;
+}
+
+#sidebarcontents {
+	padding: 5px 0px 5px 0px;
+}
+
+/*Sidemenu*/
+#menu {
+	list-style: none;
+}
+
+#menu li ul {
+	list-style: none;
+}
+
+#menu li ul li {
+	display: block;
+	height: 25px;
+	border-bottom: solid 1px #efefef;
+}
+
+#menu li ul a,#menu li ul a:visited,#menu li ul a:active {
+	display: block;
+	height: 20px;
+	padding: 5px 5px 0px 5px;
+	text-decoration: none;
+	color: #333333;
+}
+
+#menu li ul  a:hover {
+	background: #F8F9F2;
+	color: #B32C0E;
+}
+
+#menu h2 {
+	display: block;
+	border-bottom: solid 1px #D2E6CA;
+	padding: 5px;
+	margin: 10px 0px 0px 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #B32C0E;
+	font-weight: bold;
+}
+
+/*footer*/
+#footer {
+	margin: 0 auto;
+	margin-top: 100px;
+	width: 1200px;
+	height: 75px;
+	padding: 10px;
+	color: #FFFFFF;
+	text-align: center;
+	background: #333333;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	clear: both;
+	/*position: absolute;*/
+	bottom: 0;
+	left: 175px;
+}
+
+#credit {
+	font-size: 10px;
+	padding: 3px;
+}
+
+#sitename a {
+	text-decoration: none;
+	font-size: 24pxx;
+	color: #FFFFFF;
+	padding-top: 20px;
+}
+
+#topbar {
+	height: 78px;
+}
+
+#caption {
+	height: 50px;
+	background: url(images/caption.gif) repeat-x top left;
+}
+
+.bold {
+	font-size: 16px;
+	color: #FFFFFF;
+	padding-left: 100px;
+	padding-top: 25px;
+}
+
+ul.rig {
+	list-style: none;
+	font-size: 0px;
+}
+
+ul.rig li {
+	display: inline-block;
+	padding: 10px;
+	background: #fff;
+	border: none;
+	font-size: 16px;
+	font-size: 1rem;
+	vertical-align: top;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 400;
+	float: left;
+	margin-top: 20px;
+}
+
+button {
+	margin-bottom: 40px;
+	text-align: center;
+	background-color: #DA3409;
+	padding: 1rem 1.5rem;
+}
+
+select {
+	width: 200px;
+}
+
+th {
+	width: 10%;
+}
+
+table {
+	margin-top: 10px;
+	margin-left: 0px;
+	margin-right: 0px;
+	border: 1px solid #CCC;
+}
+
+thead {
+	background: #F5F5F5;
+}
+
+td {
+	border: none;
+}
+
+.table background {
+	height: 40;
+}
+
+* {
+	font-family: "gesta", Arial, sans-serif;
+}
+
+.align-center {
+	position: absolute;
+	width: 300px;
+	height: 200px;
+	z-index: 15;
+	top: 50%;
+	left: 50%;
+	margin: 100px 0 0 -150px;
+}
+
+.button {
+	margin-top: 0px;
+	text-align: center;
+	height: 40;
+	border-radius: 0;
+	/* background-color: #fe4819; */
+}
+
+input#gobutton {
+	width: 100%;
+	cursor: pointer;
+	/*forces the cursor to change to a hand when the button is hovered*/
+	padding: 5px 25px; /*add some padding to the inside of the button*/
+	background: #009ae1; border : 1px solid #009ae1;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 0px;
+	/*give the button a drop shadow*/
+	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .75);
+	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, .75);
+	box-shadow: 0 0 4px rgba(0, 0, 0, .75);
+	/*style the text*/
+	color: #f3f3f3;
+	font-size: 1.1em;
+	border: 1px solid #009ae1;
+}
+/***NOW STYLE THE BUTTON'S HOVER AND FOCUS STATES***/
+input#gobutton:hover,input#gobutton:focus {
+	background-color: #fe4819; /*make the background a little darker*/
+	/*reduce the drop shadow size to give a pushed button effect*/
+	-webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .75);
+	-moz-box-shadow: 0 0 1px rgba(0, 0, 0, .75);
+	box-shadow: 0 0 1px rgba(0, 0, 0, .75);
+}
+
+.image_banner {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#textbox {
+	width: 377px;
+	height: 35px;
+	font-size: 15px;
+	padding-left: 15px;
+	color: #333;
+}
+
+select {
+	webkit-appearance: none !important; */
+	border-radius: 0;
+	background-color: #FAFAFA;
+	background-image:
+		url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zd…J2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+	background-position: 100% center;
+	background-repeat: no-repeat;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #cccccc;
+	padding: 0.5rem;
+	font-size: 0.875rem;
+	font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	color: rgba(0, 0, 0, 0.75);
+	line-height: normal;
+	border-radius: 0;
+	height: 2.3125rem;
+}
+
+#confirm-order {
+	float: right;
+	width: 220px;
+	margin-right: 730px;
+}
+
+#cancel-order {
+	float: left;
+	width: 220px;
+}
+
+#logout {
+	cursor: pointer;
+	padding: 5px 25px;
+	border: 1px solid #fe4819;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 0px;
+	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .75);
+	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, .75);
+	box-shadow: 0 0 4px rgba(0, 0, 0, .75);
+	font-size: 1.1em;
+}
+
+#image {
+	margin-right: 50px;
+}
+
+.form2{
+width: 650px;
+    margin-top: 80px;
+    position: absolute;
+    height: 200px;
+    z-index: 15;
+    top: 50%;
+    left: 35%;
+    margin: -100px 0 0 -150px;
+}
+.payment-select {
+	width: 150px;
+}
+
+label {
+	color: #4d4d4d;
+	cursor: pointer;
+	display: block;
+	font-weight: normal;
+	line-height: 1.5;
+	margin-bottom: 0;
+}
+
+input[type="text"],input[type="password"] {
+	border-radius: 0;
+	background-color: #FFFFFF;
+	font-family: inherit;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #cccccc;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+	color: rgba(0, 0, 0, 0.75);
+	display: block;
+	font-size: 0.875rem;
+	margin: 0 0 1rem 0;
+	padding: 0.5rem;
+	height: 2.3125rem;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	transition: all 0.15s linear;
+}
+
+.form {
+	width: 300px;
+	margin-top: 120px;
+	position: absolute;
+	height: 200px;
+	z-index: 15;
+	top: 50%;
+	left: 50%;
+	margin: -100px 0 0 -150px;
+}
+
+.surveyForm {
+	width: 1000px;
+	margin-top: 120px;
+	position: absolute;
+	height: 200px;
+	z-index: 15;
+	top: 40%;
+	left: 25%;
+	margin: -100px 0 0 -150px;
+}
+
+.btn{
+	font-size: 30px;
+}

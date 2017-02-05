@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="Nviz360">
+	<property environment="env" />
+	<property file="build.properties" />
+	<target name="build-war">
+	   <war destfile="nviz.war" webxml="WebContent/WEB-INF/web.xml">
+		   <fileset dir="WebContent">
+		      <include name="**/*.*"/>
+		   </fileset>
+		   <classes dir="bin"/>
+		</war>
+		<mkdir dir="${client}" />
+		<unwar dest="${client}" src="nviz.war" />
+	</target>
+	<target name="deploy" depends="build-war">
+		 <delete includeemptydirs="true">
+	    	<fileset dir="${apache.root}/${client}" includes="**/*"/>
+	  	</delete>
+		<copy todir="${apache.root}/${client}">
+	    	<fileset dir="${client}" />
+	   	</copy>
+	</target>
+</project>

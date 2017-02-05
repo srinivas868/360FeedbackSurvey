@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+xmlns="http://java.sun.com/xml/ns/javaee"   
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   
+http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"   
+id="WebApp_ID" version="3.0">  
+<display-name>Nviz</display-name>
+  <welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+  <servlet>  
+    <servlet-name>Jersey REST Service</servlet-name>  
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>  
+    <init-param>  
+        <param-name>jersey.config.server.provider.packages</param-name>  
+        <param-value>com.nviz.rest</param-value>  
+    </init-param>  
+    <load-on-startup>1</load-on-startup>  
+  </servlet>  
+  <servlet-mapping>  
+    <servlet-name>Jersey REST Service</servlet-name>  
+    <url-pattern>/rest/*</url-pattern>  
+  </servlet-mapping>
+  <servlet>  
+    <servlet-name>Survey form submission</servlet-name>  
+    <servlet-class>com.nviz.formhandlers.SurveyFormDataServlet</servlet-class>  
+    <load-on-startup>1</load-on-startup>  
+  </servlet>  
+  <servlet-mapping>  
+    <servlet-name>Survey form submission</servlet-name>  
+    <url-pattern>/surveyFormSubmit/*</url-pattern>  
+  </servlet-mapping>  
+  <servlet>  
+    <servlet-name>Profile form submission</servlet-name>  
+    <servlet-class>com.nviz.formhandlers.ProfileFormServlet</servlet-class>  
+    <load-on-startup>1</load-on-startup>  
+  </servlet>  
+  <servlet-mapping>  
+    <servlet-name>Profile form submission</servlet-name>  
+    <url-pattern>/createUser/*</url-pattern>
+  </servlet-mapping>  
+  <filter>
+   <filter-name>ItemsRetreiverFilter</filter-name>
+   <filter-class>com.nviz.filters.ItemsRetreiverFilter</filter-class>
+  </filter>
+  <filter-mapping>
+	   <filter-name>ItemsRetreiverFilter</filter-name>
+	   <url-pattern>/survey/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+	   <filter-name>ItemsRetreiverFilter</filter-name>
+	   <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
+</web-app>   

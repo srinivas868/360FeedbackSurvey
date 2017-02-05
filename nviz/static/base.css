@@ -1,0 +1,33 @@
+.question-title-container {
+    color: #4db2ec;
+    font-size: 24px;
+    font-weight: 300;
+    font-style: normal;
+    text-decoration: none;
+}
+.question-body, .survey-page .question-body-font-theme {
+    color: #4a4a4a;
+    font-size: 12px;
+    font-weight: 300;
+    font-style: normal;
+    text-decoration: none;
+}
+.survey-submit-actions {
+    margin: 30px 0 40px 0;
+}
+.survey-page-button.done-button {
+    color: #fff;
+    background-color: #2c7db7;
+    height: 40px;
+    width: 110px;
+}
+.pagination-holder.black {
+    width: 400px;
+    margin: 0 auto;
+    background: #444;
+    border: 1px solid #333;
+    border-radius: 2px;
+}
+.question-single-choice-radio{
+	padding:10px;
+}

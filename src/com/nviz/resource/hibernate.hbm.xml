@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.nviz.vo.User" table="USER_MASTER">
+	    <id name="id" column="USER_ID" type="integer">
+          <generator class="increment"></generator>
+        </id>
+		<property name="login" column="login" type="java.lang.String">
+				</property>
+		<property name="password" column="PASSWORD" type="java.lang.String">
+				</property>
+		<property name="firstName" column="FIRST_NAME" type="java.lang.String">
+				</property>
+		<property name="lastName" column="LAST_NAME" type="java.lang.String">
+				</property>
+		<property name="employeeId" column="EMPLOYEE_ID" type="java.lang.String">
+				</property>
+		<list name="address" cascade="all" lazy="false">
+	         <key column="user_id"/>
+          	<index column="type"></index>  
+	         <one-to-many class="com.nviz.vo.Address"/>
+      	</list>
+	</class>
+	<class name="com.nviz.vo.Address" table="ADDRESS_MASTER">
+		<id name="addressId" column="ADDRESS_ID" type="integer">
+			<generator class="increment"></generator>
+		</id>
+		<property name="address1" column="ADDRESS1" type="java.lang.String"></property>
+		<property name="address2" column="ADDRESS2" type="java.lang.String"></property>
+		<property name="phoneNum" column="PH_NO" type="java.lang.Integer"></property>
+		<property name="pinCode" column="PINCODE" type="java.lang.Integer"></property>
+		<property name="state" column="STATE" type="java.lang.String"></property>
+	</class>
+	<class name="com.nviz.vo.Survey" table="SURVEY_MASTER">
+		<id name="surveyId" column="SURVEY_ID" type="integer">
+			<generator class="increment"></generator>
+		</id>
+		<property name="title" column="TITLE" type="java.lang.String">
+				</property>
+		<property name="description" column="DESCRIPTION" type="java.lang.String">
+				</property>
+		<list name="qualities" cascade="all" lazy="false">
+			<key column="survey_id"/>
+          	<index column="type"></index>  
+	         <one-to-many class="com.nviz.vo.Quality"/>
+      	</list>
+	</class>
+	<class name="com.nviz.vo.Quality" table="QUALITY_MASTER">
+		<id name="qualityId" column="QUALITY_ID" type="integer">
+			<generator class="increment"></generator>
+		</id>
+		<property name="title" column="TITLE" type="java.lang.String"></property>
+		<property name="description" column="DESCRIPTION" type="java.lang.String"></property>
+	</class>
+	
+	<class name="com.nviz.vo.Record" table="RECORD_MASTER">
+		<id name="recordId" column="RECORD_ID" type="integer">
+			<generator class="increment"></generator>
+		</id>
+		<property name="input" column="input" type="java.lang.Integer"></property>
+		<many-to-one name="user" column="USER" class="com.nviz.vo.User" cascade="save-update" />
+		<many-to-one name="survey" column="SURVEY" class="com.nviz.vo.Survey" cascade="save-update" />
+		<many-to-one name="quality" column="QUALITY" class="com.nviz.vo.Quality" cascade="save-update" />
+		<property name="comments" column="comments" type="java.lang.String"></property>
+	</class> 
+	
+	<class name="com.nviz.vo.Rating" table="RATING_MASTER">
+		<id name="ratingId" column="RATING_ID" type="integer">
+			<generator class="increment"></generator>
+		</id>
+		<property name="description" column="DESCRIPTION" type="java.lang.String"></property>
+		<property name="title" column="TITLE" type="java.lang.String"></property>
+		<property name="input" column="INPUT" type="java.lang.Integer"></property>
+	</class>
+</hibernate-mapping>
