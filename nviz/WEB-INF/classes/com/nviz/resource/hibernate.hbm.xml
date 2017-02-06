@@ -75,4 +75,13 @@
 		<property name="title" column="TITLE" type="java.lang.String"></property>
 		<property name="input" column="INPUT" type="java.lang.Integer"></property>
 	</class>
+	<class name="com.nviz.vo.ReportRecordTrail" table="REPORT_RECORD_TRAILS_MASTER">
+		<id name="id" column="ID" type="integer">
+			<generator class="increment"></generator>
+		</id>
+		<property name="surveyTitle" column="SURVEY_TITLE" type="java.lang.String"></property>
+		<property name="surveyId" column="SURVEY_ID" type="java.lang.String"></property>
+		<property name="userId" column="USER_ID" type="java.lang.String"></property>
+		<property name="reportPath" column="REPORT_PATH" type="java.lang.String"></property>
+	</class>
 </hibernate-mapping>

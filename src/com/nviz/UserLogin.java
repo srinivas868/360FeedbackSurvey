@@ -25,7 +25,7 @@ public class UserLogin {
 	    SessionFactory sf=cfg.buildSessionFactory();  
 	    Session session=sf.openSession();  
 	    Transaction tx=session.beginTransaction(); 
-	    Query query = session.createQuery("FROM Survey"); 
+	    Query query = session.createQuery("FROM Record"); 
 	    List<Survey> list = query.list();
 	    Record record=new Record();
 	    for(Survey s : list){

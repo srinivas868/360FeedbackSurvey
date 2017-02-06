@@ -52,18 +52,17 @@ p a:hover {
 #header a.logo {
 	display: block;
 	margin: 0 auto;
-	padding: 0;
+	padding-bottom: 20px;
 	width: 340px;
 }
 #header a.logo img {
 	border: 0;
 	display: block;
-	margin: 0;
 	padding: 0;
 }
 #header ul {
 	margin: 0;
-	padding: 56px 0 0;
+	padding: 10px 0 0;
 }
 #header ul li {
 	display: inline;
@@ -194,12 +193,12 @@ p a:hover {
 	color: #fff;
 	display: inline-block;
 	font-family: "Arial Black", Gadget, sans-serif;
-	font-size: 18px;
+	font-size: 12px;
 	font-weight: normal;
 	margin: 0;
 	padding: 8px 28px;
 	text-decoration: none;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 }
 #body div ul li div a.more:hover {
 	color: #252525;
@@ -436,9 +435,25 @@ p a:hover {
     height: 30px;
     float: right;
 }
+.input-login{
+	padding: 7px;
+    width: 242px!important;
+}
 .input-div{
 	height: 60px;
+	padding-top: 10px;
 }
 .input-div p{
 	float:left;
+}
+.drop-down{
+	display:none;
+	margin-right: 22px;
+}
+.button{
+	width:242px;
+}
+.error-message{
+	background: rgba(255, 0, 0, 0.11);
+	width: 262px;
 }

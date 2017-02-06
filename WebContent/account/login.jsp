@@ -4,11 +4,13 @@
 <%@ include file="/common/static-content.jsp" %>
 <div class="article">
 	<input type="hidden" id="loginPage" name="loginPage" value="true">
-	<form id="loginForm" name="loginForm" method="POST" action="login" style="width:300px;">
-	<div class="input-div"><p>Login </p><input type="text" name="login" class="input-textbox" value=""><br/></div>
-	<div class="input-div"><p>Password </p><input type="password" name="firstName" class="input-textbox" value=""><br/></div>
-	<div align="center"><button id="survey-form-submit" type="submit" class="button" onclick="return login();">
+	<form id="loginForm" name="loginForm" method="POST" action="login" style="width:300px;padding-bottom:50px;">
+	<div align="center" class="error-message"><p></p></div>
+	<div class="input-div"><p>Login </p><br/><br/><input type="text" name="login" class="input-login" value=""><br/></div>
+	<div class="input-div"><p>Password </p><br/><input type="password" name="password" class="input-login" value=""><br/></div>
+	<button id="survey-form-submit" type="submit" class="button" onclick="return loginUser();" style="width:258px;">
            Submit
-    </button></div>
+    </button>
+    </form>
 </div>
 </html>

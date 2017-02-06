@@ -9,10 +9,13 @@
 		</div>
 		<div class="right-content-admin">
 		<c:forEach var="survey" items="${surveyItems}" varStatus="status">
-			<h3>${survey.title}</h3>
-			<p>
+			<div style="width: 400px;padding-top: 8px;">
+				<h3 style="float:left">${survey.title}</h3> <a style="float:right;"href="javascript:generateReport('${survey.surveyId}');" class="more">Generate report</a>
+			</div>
+			<%-- <h3>${survey.title}</h3> --%>
+			<br/><br/><br/><div><p>
 				${survey.description}
-			</p>
+			</p></div>
 		</c:forEach>
 		<a href="javascript:loadCreateSurveyForm();" class="more">Create Survey</a>
 		</div>

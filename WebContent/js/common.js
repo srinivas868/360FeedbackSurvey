@@ -13,12 +13,27 @@ function loadAdminConsole(){
 function loadMyAccount(){
 	$("#body").load( "/nviz/account/index.jsp" );
 	$('#navigation li').removeClass();
-	$('#home').attr('class','selected');
+	$('#my-account').attr('class','selected');
 }
 function loadHome(){
 	$("#body").load( "/nviz/snips/main-content.jsp" );
 	$('#navigation li').removeClass();
-	$('#my-account').attr('class','selected');
+	$('#home').attr('class','selected');
+}
+function logout(){
+	var options = {
+			success: logoutResponse,
+			dataType: 'json'
+		};
+	var form = $("#logoutForm");
+	form.ajaxForm(options);
+	form.submit();
+	return false;
+}
+function logoutResponse(data){
+	if('success' == data.code){
+		window.location.href='/nviz/index.jsp';
+	}
 }
 function loadPagination() {
 	var qualitiesCount = $('#qualitiesCount').val();
@@ -77,10 +92,10 @@ function createUser(){
 }
 function userFormResponse(data){
 	if('success' == data.code){
-		$("#body").load( "/nviz/admin/confirmation.jsp" );
+		$("#body").load( "/nviz/index.jsp" );
 	}
 }
-function login(){
+function loginUser(){
 	var options = {
 		success: loginResponse,
 		dataType: 'json'
@@ -91,13 +106,64 @@ function login(){
 	return false;
 }
 function loginResponse(data){
-	if('success' == data.code){
-		$("#body").load( "/nviz/survey/confirmation.jsp" );
+	if('success' == data.status){
+		window.location.href='/nviz/index.jsp';
+	} else{
+		$('div.error-message p').empty();
+		$('div.error-message p').append(data.message);
 	}
 }
+function viewReport(surveyId,userId){
+	var input = new InputCustomerDetailItem(surveyId, userId);
+    var jsonInput = JSON.stringify(input);
+	$.ajax({
+        url : '/nviz/report/rest/reportmanager/view',
+        type : 'GET',
+        data: jsonInput,
+        async : false,
+        datatype : "application/json",
+        contentType: "application/json; charset=utf-8",
+        success : function(data) {
+        	if(data.status == 'success'){
+        		$('#dlink-'+surveyId).attr('href',data.recordPath);
+        		document.getElementById('dlink-'+surveyId).click();
+        	} else{
+        		alert(data.message);
+        	}
+        }
+	});
+}
+function generateReport(surveyId){
+	var input = new InputCustomerDetailItem(surveyId,null);
+	var jsonInput = JSON.stringify(input);
+	$.ajax({
+        url : '/nviz/report/rest/reportmanager/generate',
+        type : 'GET',
+        data: jsonInput,
+        async : false,
+        datatype : "application/json",
+        contentType: "application/json; charset=utf-8",
+        success : function(data) {
+        	if(data.status != 'Success'){
+        		
+        	}
+        }
+	});
+}
+$(document).ready(function(){
+	$('#my-account, ul.drop-down').hover(
+		function(){
+			$('.drop-down').show();
+		},
+		function(){
+			$('.drop-down').hide();
+		}
+	);
+});
+
 $(document).ready(function(){
 	$.ajax({
-        url : '/nviz/rest/user/validateLogin',
+        url : '/nviz/account/rest/usermanager/validateLogin',
         type : 'GET',
         async : false,
         datatype : "application/json",
@@ -113,3 +179,7 @@ $(document).ready(function(){
         }
 	});
 });
+function InputCustomerDetailItem(param1, param2) {
+    this.param1 = param1;
+    this.param2 = param2;
+}

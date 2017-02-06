@@ -7,14 +7,14 @@
 		<div class="left-content-account">
 			<h1 style="font-size:18px;"><span>Account Overview</span></h1>
 		</div>
-		<div class="right-content-account">
-		user ${user}
+		<div style="width: 400px;padding-top: 8px;">
 		<c:if test="${not empty user}">
 			<h3>${user.firstName} ${user.lastName}</h3>
 			<p>
 				${user.employeeId}
 			</p>
 		</c:if>
+		<br/>
 		<a href="javascript:loadCreateSurveyForm();" class="more">Add address</a>
 		</div>
 	</li>
@@ -22,15 +22,17 @@
 		<div class="left-content-account">
 			<h1 style="font-size:18px;"><span>Survey Overview</span></h1>
 		</div>
-		<div class="right-content-account">
 		<c:forEach var="survey" items="${surveyItems}" varStatus="status">
-			<h3>${survey.title}</h3>
-			<p>
+			<div style="width: 400px;padding-top: 8px;">
+				<h3 style="float:left">${survey.title}</h3> 
+				<a style="float:right;"href="javascript:viewReport('${survey.surveyId}','${user.id}');" class="more">View report</a>
+			</div>
+			<br/><br/><br/><div><p>
 				${survey.description}
-			</p>
+			</p></div>
+			<a id="dlink-${survey.surveyId}" href="" style="display:none;" download></a>
 		</c:forEach>
 		<!-- <a href="javascript:loadCreateUserForm();" class="more">Create User</a> -->
-		</div>
 	</li>
 </ul>
 </div>

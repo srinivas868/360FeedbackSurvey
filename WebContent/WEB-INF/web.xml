@@ -9,21 +9,34 @@ id="WebApp_ID" version="3.0">
 		<welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>
   <servlet>  
-    <servlet-name>Jersey REST Service</servlet-name>  
+    <servlet-name>User Jersey REST Service</servlet-name>  
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>  
     <init-param>  
         <param-name>jersey.config.server.provider.packages</param-name>  
-        <param-value>com.nviz.rest</param-value>
-    </init-param>  
-    <load-on-startup>1</load-on-startup>  
+        <param-value>com.nviz.account.rest</param-value>
+    </init-param> 
+    <load-on-startup>1</load-on-startup>
   </servlet>  
   <servlet-mapping>  
-    <servlet-name>Jersey REST Service</servlet-name>
-    <url-pattern>/rest/*</url-pattern>  
+    <servlet-name>User Jersey REST Service</servlet-name>
+    <url-pattern>/account/rest/*</url-pattern>  
   </servlet-mapping>
   <servlet>  
-    <servlet-name>Survey form submission</servlet-name>  
-    <servlet-class>com.nviz.formhandlers.SurveyFormDataServlet</servlet-class>  
+    <servlet-name>Report Jersey REST Service</servlet-name>  
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>  
+    <init-param>  
+        <param-name>jersey.config.server.provider.packages</param-name>
+        <param-value>com.nviz.report.rest</param-value>
+    </init-param> 
+    <load-on-startup>1</load-on-startup>
+  </servlet>  
+  <servlet-mapping>  
+    <servlet-name>Report Jersey REST Service</servlet-name>
+    <url-pattern>/report/rest/*</url-pattern>  
+  </servlet-mapping>
+  <servlet>  
+    <servlet-name>Survey form submission</servlet-name>
+    <servlet-class>com.nviz.formhandler.SurveyFormDataServlet</servlet-class>  
     <load-on-startup>1</load-on-startup>  
   </servlet>  
   <servlet-mapping>  
@@ -32,7 +45,7 @@ id="WebApp_ID" version="3.0">
   </servlet-mapping>  
   <servlet>  
     <servlet-name>Profile form submission</servlet-name>  
-    <servlet-class>com.nviz.formhandlers.ProfileFormServlet</servlet-class>  
+    <servlet-class>com.nviz.formhandler.ProfileFormServlet</servlet-class>  
     <load-on-startup>1</load-on-startup>  
   </servlet>  
   <servlet-mapping>  
@@ -41,16 +54,25 @@ id="WebApp_ID" version="3.0">
   </servlet-mapping> 
   <servlet>  
     <servlet-name>Login form submission</servlet-name>  
-    <servlet-class>com.nviz.formhandlers.LoginFormServlet</servlet-class>  
+    <servlet-class>com.nviz.formhandler.LoginFormServlet</servlet-class>  
     <load-on-startup>1</load-on-startup>  
   </servlet>  
   <servlet-mapping>  
     <servlet-name>Login form submission</servlet-name>  
     <url-pattern>/login/*</url-pattern>
   </servlet-mapping>  
+  <servlet>  
+    <servlet-name>Logout form submission</servlet-name>  
+    <servlet-class>com.nviz.formhandler.LogoutFormServlet</servlet-class>  
+    <load-on-startup>1</load-on-startup>  
+  </servlet>  
+  <servlet-mapping>  
+    <servlet-name>Logout form submission</servlet-name>  
+    <url-pattern>/logout/*</url-pattern>
+  </servlet-mapping>  
   <filter>
    <filter-name>ItemsRetreiverFilter</filter-name>
-   <filter-class>com.nviz.filters.ItemsRetreiverFilter</filter-class>
+   <filter-class>com.nviz.filter.ItemsRetreiverFilter</filter-class>
   </filter>
   <filter-mapping>
 	   <filter-name>ItemsRetreiverFilter</filter-name>
@@ -66,7 +88,7 @@ id="WebApp_ID" version="3.0">
   </filter-mapping>
   <filter>
    <filter-name>SessionControllerFilter</filter-name>
-   <filter-class>com.nviz.filters.SessionControllerFilter</filter-class>
+   <filter-class>com.nviz.filter.SessionControllerFilter</filter-class>
   </filter>
   <filter-mapping>
 	   <filter-name>SessionControllerFilter</filter-name>

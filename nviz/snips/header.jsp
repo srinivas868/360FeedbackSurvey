@@ -8,24 +8,33 @@
 <body>
 	<div id="header">
 		<a href="index.html" class="logo">
-			<!-- <img src="images/360-feedback-image-760.jpg" alt=""> -->
+			<img src="images/icons/nviz_logo.jpg" alt="">
 		</a>
-		<ul id="navigation">
-			<li id="home" class="selected">
-				<a href="javascript:loadHome();">Home</a>
-			</li>
-			<li id="about-us">
-				<a href="javascript:loadAboutUs();">About Us</a>
-			</li>
-			<li id="my-account">
-				<a href="javascript:loadMyAccount();">My Account</a>
-			</li>
-			<li id="survey">
-				<a href="javascript:loadSurvey();">Survey</a>
-			</li>
-			<li id="admin">
-				<a href="javascript:loadAdminConsole();">Admin Console</a>
-			</li>
-		</ul>
+		<c:if test="${not empty user}">
+			<ul id="navigation">
+				<li id="home" class="selected">
+					<a href="javascript:loadHome();">Home</a>
+				</li>
+				<li id="about-us">
+					<a href="javascript:loadAboutUs();">About Us</a>
+				</li>
+				<li id="my-account">
+					<a href="javascript:loadMyAccount();">My Account</a>
+				</li>
+				<li id="survey">
+					<a href="javascript:loadSurvey();">Survey</a>
+				</li>
+				<li id="admin">
+					<a href="javascript:loadAdminConsole();">Admin Console</a>
+				</li>
+			</ul>
+			<ul class="drop-down">
+				<li id="logout" >
+					<a href="javascript:logout();">Logout</a>
+				</li>
+			</ul>
+			<form id="logoutForm" name="logoutForm" method="POST" action="logout" style="display:none;">
+			</form>
+		</c:if>
 	</div>
 </html>
